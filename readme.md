@@ -5,6 +5,8 @@ A sleek, standalone, and high-performance browser code editor powered by **Monac
 This editor supports real-time syntax highlighting language switching and live theme adjustments completely offline—without relying on external internet CDN links.
 
 ---
+<img width="1100" height="736" alt="image" src="https://github.com/user-attachments/assets/91a35e87-9984-40cc-83dc-10b3af00f81d" />
+
 
 ## ✨ Features
 
