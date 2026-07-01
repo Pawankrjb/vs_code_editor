@@ -1,0 +1,83 @@
+/* 1. Reset Environment */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #1e1e1e; /* Core Editor Background */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 2. Responsive Core Frame */
+.main-wrapper {
+    width: 100%;
+    max-width: 1050px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    border-bottom: 1px solid #3c3c3c;
+    padding-bottom: 12px;
+}
+
+/* 3. Dropdown Menu Strip */
+.control-panel { 
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
+    background-color: #252526; 
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #3c3c3c;
+}
+
+.control-panel div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label { 
+    font-size: 13px; 
+    color: #b5b5b5;
+}
+
+select { 
+    padding: 6px 12px; 
+    font-size: 13px; 
+    color: #ffffff;
+    background-color: #3c3c3c;
+    border-radius: 4px; 
+    border: 1px solid #555555; 
+    cursor: pointer; 
+    outline: none;
+}
+
+select:hover {
+    border-color: #007acc;
+}
+
+/* 4. Flexible Editor Box Frame (Typing Lock Fix) */
+#editorBox { 
+    width: 100%; 
+    height: 500px; 
+    border: 1px solid #3c3c3c;
+    background-color: #1e1e1e;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    display: block; /* Pure layout calculation block trigger */
+    position: relative; /* Internal layout references */
+}

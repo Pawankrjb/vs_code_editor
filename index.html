@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My-editor</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Unified Master Layout Holder -->
+    <div class="main-wrapper">
+        
+        <h1>Hii this is your editor tool</h1>
+        
+        <div class="control-panel">
+            <div>
+                <label for="languageSelect">Language: </label>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="javascript">JavaScript</option>
+                    <option value="cpp">C++</option>
+                    <option value="python">Python</option>
+                    <option value="html">HTML</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="themeSelect">Theme: </label>
+                <select id="themeSelect" onchange="changeTheme()">
+                    <option value="vs-dark">Dark Mode</option>
+                    <option value="vs">Light Mode</option>
+                    <option value="hc-black">High Contrast</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Safe Fluid Box for Monaco Input Handling -->
+        <div id="editorBox"></div>
+        
+    </div>
+
+    <script src="/monaco-local/min/vs/loader.js"></script>
+    <script>
+        let editorInstance;
+        
+        require.config({ paths: { 'vs': '/monaco-local/min/vs' }});
+        
+        require(['vs/editor/editor.main'], function() {
+            editorInstance = monaco.editor.create(document.getElementById('editorBox'), {
+                value: 'console.log("Hello, World!");',
+                language: 'javascript',
+                theme: 'vs-dark',
+                automaticLayout: true, // Auto resizes if layout dimensions change
+                readOnly: false        // Strict focus active
+            });
+        });
+
+        function changeLanguage() {
+            const languageSelect = document.getElementById('languageSelect');
+            const selectedLanguage = languageSelect.value;
+            
+            monaco.editor.setModelLanguage(editorInstance.getModel(), selectedLanguage);
+            
+            if (selectedLanguage === 'cpp') {
+                editorInstance.setValue("#include <iostream>\n\nint main() {\n    std::cout << \"Hello C++\";\n    return 0;\n}");
+            } else if (selectedLanguage === 'python') {
+                editorInstance.setValue("print('Hello Python')");
+            } else if (selectedLanguage === 'javascript') {
+                editorInstance.setValue("console.log('Hello JavaScript');");
+            } else if (selectedLanguage === 'html') {
+                editorInstance.setValue("<h1>Hello HTML</h1>");
+            }
+        }
+
+        function changeTheme() {
+            const selectedTheme = document.getElementById('themeSelect').value;
+            monaco.editor.setTheme(selectedTheme);
+        }
+    </script>
+</body>
+</html>
